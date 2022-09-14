@@ -38,6 +38,9 @@ class AuthController extends Controller
             }
 
             $userPermissions = [
+                'admin' => [
+                    'access:all'
+                ],
                 'recruiter' => [
                     "job:post",
                     "candidate:index"
@@ -47,7 +50,7 @@ class AuthController extends Controller
                 ]
             ];
             $permissions = [
-                1 => array_merge($userPermissions['recruiter'], $userPermissions['interviewer']),
+                1 => $userPermissions['admin'],
                 2 => $userPermissions['recruiter'],
                 3 => $userPermissions['interviewer']
             ];
