@@ -37,22 +37,10 @@ class AuthController extends Controller
                 ], 401);
             }
 
-            $userPermissions = [
-                'admin' => [
-                    'access:all'
-                ],
-                'recruiter' => [
-                    "job:post",
-                    "candidate:index"
-                ],
-                'interviewer' => [
-                    "take:interview"
-                ]
-            ];
             $permissions = [
-                1 => $userPermissions['admin'],
-                2 => $userPermissions['recruiter'],
-                3 => $userPermissions['interviewer']
+                1 => ['admin'],
+                2 => ['recruiter'],
+                3 => ['interviewer']
             ];
 
             $user = User::where('email', $request->email)->first();
